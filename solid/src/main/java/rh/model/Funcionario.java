@@ -63,4 +63,8 @@ public class Funcionario {
         this.dataUltimoReajuste = LocalDate.now();
     }
 
+    public void atualizarDataUltimoReajuste(LocalDate now) {
+        this.dataUltimoReajuste = now;
+    }
+
 }
