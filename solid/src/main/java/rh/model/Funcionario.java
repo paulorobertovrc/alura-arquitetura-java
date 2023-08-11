@@ -67,4 +67,12 @@ public class Funcionario {
         this.dataUltimoReajuste = now;
     }
 
+    public boolean temCargo(Cargo cargo) {
+        return this.cargo == cargo;
+    }
+
+    public void promover(Cargo novoCargo) {
+        this.cargo = novoCargo;
+    }
+
 }

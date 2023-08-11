@@ -1,5 +1,36 @@
 package rh.model;
 
+import rh.ValidacaoException;
+
 public enum Cargo {
-    ASSISTENTE, ANALISTA, ESPECIALISTA, GERENTE;
+    ASSISTENTE {
+        @Override
+        public Cargo getProximoCargo() {
+            return ANALISTA;
+        }
+    },
+
+    ANALISTA {
+        @Override
+        public Cargo getProximoCargo() {
+            return ESPECIALISTA;
+        }
+    },
+
+    ESPECIALISTA {
+        @Override
+        public Cargo getProximoCargo() {
+            return GERENTE;
+        }
+    },
+
+    GERENTE {
+        @Override
+        public Cargo getProximoCargo() {
+            throw new ValidacaoException("O Gerente já é o último cargo!");
+        }
+    };
+
+    public abstract Cargo getProximoCargo();
+
 }

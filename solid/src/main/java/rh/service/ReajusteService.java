@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ReajusteService {
 
-    private List<ValidacaoReajuste> validacoes;
+    private final List<ValidacaoReajuste> validacoes;
 
     public ReajusteService(List<ValidacaoReajuste> validacoes) {
         this.validacoes = validacoes;
