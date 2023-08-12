@@ -49,4 +49,13 @@ public class Orcamento {
         this.situacao.finalizar(this);
     }
 
+    @Override
+    public String toString() {
+        return "Orcamento{" +
+                "valor=" + valor +
+                ", quantidadeItens=" + quantidadeItens +
+                ", situacao=" + situacao +
+                '}';
+    }
+
 }

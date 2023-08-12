@@ -1,25 +1,24 @@
 package loja.pedido;
 
 import loja.orcamento.Orcamento;
+import loja.pedido.acao.AcaoPosPedido;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class GerarPedidoHandler {
 
-    // construtor com injeção de dependências
-    public GerarPedidoHandler(/* ... */) {
-        // ...
+    private List<AcaoPosPedido> acoes;
+
+    public GerarPedidoHandler(List<AcaoPosPedido> acoes) {
+        this.acoes = acoes;
     }
 
     public void executar(GerarPedido dados) {
         Orcamento orcamento = new Orcamento(dados.getValorOrcamento(), dados.getQuantidadeItens());
         Pedido pedido = new Pedido(dados.getCliente(), LocalDateTime.now(), orcamento);
 
-        System.out.println("Pedido gerado com sucesso!");
-        System.out.println("Cliente: " + pedido.getCliente());
-        System.out.println("Data: " + pedido.getData());
-        System.out.println("Valor: " + pedido.getOrcamento().getValor());
-        System.out.println("Quantidade de itens: " + pedido.getOrcamento().getQuantidadeItens());
+        acoes.forEach(acao -> acao.executar(pedido));
     }
 
 }

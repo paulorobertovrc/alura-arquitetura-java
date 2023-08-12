@@ -21,4 +21,9 @@ public abstract class Situacao {
         throw new DomainException("A situação atual do projeto não permite que seja FINALIZADO!");
     }
 
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
+
 }

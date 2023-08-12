@@ -2,8 +2,12 @@ package loja;
 
 import loja.pedido.GerarPedidoHandler;
 import loja.pedido.GerarPedido;
+import loja.pedido.acao.EnviarEmailPedido;
+import loja.pedido.acao.SalvarPedidoBanco;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 
 public class TestesPedidos {
     public static void main(String[] args) {
@@ -12,7 +16,11 @@ public class TestesPedidos {
         int quantidadeItens = Integer.parseInt(args[2]);
 
         GerarPedido gerador = new GerarPedido(cliente, valorOrcamento, quantidadeItens);
-        GerarPedidoHandler handler = new GerarPedidoHandler(/* dependências */);
+        GerarPedidoHandler handler = new GerarPedidoHandler(
+                List.of(new SalvarPedidoBanco(),
+                        new EnviarEmailPedido())
+        );
+
         handler.executar(gerador);
     }
 

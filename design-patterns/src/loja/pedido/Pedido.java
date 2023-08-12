@@ -14,6 +14,8 @@ public class Pedido {
         this.cliente = cliente;
         this.data = data;
         this.orcamento = orcamento;
+
+        System.out.println("Pedido gerado com sucesso!");
     }
 
     public String getCliente() {
@@ -26,6 +28,15 @@ public class Pedido {
 
     public Orcamento getOrcamento() {
         return orcamento;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "cliente='" + cliente + '\'' +
+                ", data=" + data +
+                ", orcamento=" + orcamento +
+                '}';
     }
 
 }
