@@ -1,12 +1,12 @@
 package loja;
 
-import loja.pedido.GerarPedidoHandler;
 import loja.pedido.GerarPedido;
+import loja.pedido.GerarPedidoHandler;
 import loja.pedido.acao.EnviarEmailPedido;
+import loja.pedido.acao.LogPedido;
 import loja.pedido.acao.SalvarPedidoBanco;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 
 public class TestesPedidos {
@@ -18,10 +18,11 @@ public class TestesPedidos {
         GerarPedido gerador = new GerarPedido(cliente, valorOrcamento, quantidadeItens);
         GerarPedidoHandler handler = new GerarPedidoHandler(
                 List.of(new SalvarPedidoBanco(),
-                        new EnviarEmailPedido())
+                        new EnviarEmailPedido(),
+                        new LogPedido())
         );
 
-        handler.executar(gerador);
+        handler.executar(gerador); // Facade
     }
 
 }
